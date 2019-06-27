@@ -1,8 +1,19 @@
 import React, { Component } from 'react'
-import Head from 'next/head'
+import { connect } from "react-redux";
 import { fetchArticles } from "../../api";
 import Content from "./content";
 import "./index.scss"
+
+function mapStateToProps(state) {
+    return {
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        
+    };
+}
 
 class Index extends Component {
     static async getInitialProps() {
@@ -24,27 +35,31 @@ class Index extends Component {
 
         this.state = {
             postVisible: false,
-            currentPost: {}
+            currentPost: {},
+            itemRect: {}
         }
     }
 
-    openDetail(item) {
+    openDetail(item, index) {
+        const itemRect = this.refs["post_" + index].getBoundingClientRect();
+
         this.setState({
             postVisible: true,
-            currentPost: item
+            currentPost: item,
+            itemRect
         })
     }
 
     render() {
         const { postItems } = this.props;
-        const { postVisible, currentPost } = this.state;
+        const { postVisible, currentPost, itemRect } = this.state;
 
         return (
             <div className="blog-warpper">
                 <ul className="post-list">
                     {
                         postItems.map((item, index) => (
-                            <li key={index} onClick={() => this.openDetail(item)}>
+                            <li key={index} onClick={() => this.openDetail(item, index)} ref={"post_" + index}>
                                 <div className="post-item">
                                     <h5 className="title">
                                         {item.title}
@@ -58,16 +73,20 @@ class Index extends Component {
                         ))
                     }
                 </ul>
-                <Content
-                    data={currentPost}
-                    visible={postVisible}
-                    onClose={() => this.setState({
-                        postVisible: false
-                    })}
-                />
+                {
+                    postVisible && 
+                    <Content
+                        data={currentPost}
+                        itemRect={itemRect}
+                        visible={postVisible}
+                        onClose={() => this.setState({
+                            postVisible: false
+                        })}
+                    />
+                }
             </div>
         )
     }
 }
 
-export default Index
+export default connect(mapStateToProps, mapDispatchToProps)(Index)

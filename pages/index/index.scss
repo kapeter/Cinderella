@@ -51,12 +51,9 @@
 
 .post-warpper{
     position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    background: #ffffff;
+    background: #fff;
     overflow-y: auto;
+    padding: 12px 0;
     .close{
         position: absolute;
         right: 0;
@@ -65,21 +62,23 @@
         border-left: 1px dashed #ededed;
         border-bottom: 1px dashed #ededed;
         .iconfont{
-            font-size: 48px;
+            font-size: 36px;
             color: #979797;
         }
         &:hover{
-            border-left: 1px dashed #00ADB5;
-            border-bottom: 1px dashed #00ADB5;
+            border-left: 1px dashed #3bbb79;
+            border-bottom: 1px dashed #3bbb79;
             .iconfont{
-                color: #00ADB5;
+                color: #3bbb79;
             }
         }
     }
     .post-body{
         width: 100%;
         margin: 0 auto;
-        padding: 24px 12px;
+        padding: 48px 12px;
+        background: #ffffff;
+        transition: all .25s ease-out;
         .title{
             text-align: center;
             font-size: 28px;
@@ -106,7 +105,7 @@
                 position: absolute;
                 left: 0;
                 bottom: -1px;
-                background: #00ADB5;
+                background: #3bbb79;
               }
             }
             h2, h3, h4, h5, h6{
@@ -140,7 +139,7 @@
             code{
               margin: 0 2px;
               padding: 0 2px;
-              background: #f4f4f4;
+              background: #f9f9f9;
               color: #333;
               font: 13px/1.5 "Helvetica Neue",Helvetica,Arial,sans-serif;
             }
@@ -152,7 +151,7 @@
                 padding: 6px 12px;
                 overflow-x: auto;
                 margin-bottom: 0.85em;
-                background: #f4f4f4;
+                background: #f9f9f9;
                 code{
                     margin: 0;
                     color: #5a6665;
@@ -164,7 +163,7 @@
                 overflow-x: auto;
                 margin-bottom: 0.85em;
                 background: #f5f5f5;
-                border-left:3px solid #00ADB5;
+                border-left:3px solid #3bbb79;
                 ul,ol,p{
                     &:last-child{
                         margin-bottom: 0;
@@ -251,7 +250,7 @@
     .post-warpper{
         .post-body{
             width: 768px;
-            padding: 48px 0;
+            padding: 48px 12px;
             .content{
                 margin-top: 48px;
             }

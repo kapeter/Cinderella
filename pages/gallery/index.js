@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import Loading from "../../components/loading"
+import NoData from "../../components/no-data"
+
 import "./index.scss"
 
 class Gallery extends Component {
@@ -8,7 +10,8 @@ class Gallery extends Component {
             title: "Gallery / KaPeter"
         }
         return {
-            headOptions
+            headOptions,
+            picItem: []
         }
     }
 
@@ -22,10 +25,13 @@ class Gallery extends Component {
 
     render() {
         const {loading} = this.state;
+        const {picItem} = this.props;
+
+        if (!picItem || !picItem.length) return <NoData />
+
         return (
             <div className="gallery">
                 <div>gallery</div>
-                <Loading visible={loading}/>
             </div>
         )
     }

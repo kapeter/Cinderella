@@ -1,9 +1,29 @@
 import React, { Component } from 'react'
+import { connect } from "react-redux";
 import Link from '../components/link'
 import Head from 'next/head'
 import "./index.scss"
 
+function mapStateToProps(state) {
+    return {
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        setContentRect: (value) => {
+            dispatch({type: 'SET_CONTENT_RECT', payload: value})
+        }
+    };
+}
+
 class Layout extends Component {
+
+    componentDidMount() {
+        const {setContentRect} = this.props;
+
+        setContentRect(this.refs.content.getBoundingClientRect());
+    }
 
     render() {
         const { children, headOptions } = this.props;
@@ -52,7 +72,7 @@ class Layout extends Component {
                         </p>
                     </footer>  
                 </div>
-                <div className="content">
+                <div className="content" ref="content">
                     {children}
                 </div>
                 <div className="cover"></div>
@@ -61,5 +81,4 @@ class Layout extends Component {
     }
 }
 
-export default Layout;
-
+export default connect(mapStateToProps, mapDispatchToProps)(Layout)

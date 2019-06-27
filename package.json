@@ -16,8 +16,11 @@
     "axios": "^0.18.0",
     "marked": "^0.6.0",
     "next": "^7.0.2",
+    "next-redux-wrapper": "^3.0.0-alpha.2",
     "node-sass": "^4.11.0",
     "react": "^16.7.0",
-    "react-dom": "^16.7.0"
+    "react-dom": "^16.7.0",
+    "react-redux": "^6.0.1",
+    "redux": "^4.0.1"
   }
 }
